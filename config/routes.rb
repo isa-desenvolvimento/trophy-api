@@ -5,4 +5,17 @@ Rails.application.routes.draw do
   		resources :users
   	end
   end
+
+  namespace 'api' do
+  	namespace 'v1' do
+  		resources :monster
+  	end
+  end
+
+  namespace 'api' do
+	namespace 'v1' do
+		resources :collected_coin
+	end
+   end
+
 end
