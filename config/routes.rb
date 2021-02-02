@@ -16,6 +16,30 @@ Rails.application.routes.draw do
 	namespace 'v1' do
 		resources :collected_coin
 	end
-   end
+  end
+
+  namespace 'api' do
+	namespace 'v1' do
+		resources :death
+	end
+  end
+
+  namespace 'api' do
+	namespace 'v1' do
+		resources :killed_monster
+	end
+  end
+
+  namespace 'api' do
+	namespace 'v1' do
+		resources :user_trophy
+	end
+  end
+
+  namespace 'api' do
+	namespace 'v1' do
+		resources :trophy
+	end
+  end
 
 end
