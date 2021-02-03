@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "users", id: :integer, charset: "utf8", options: "ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", limit: 150
+    t.string "email", limit: 150
+    t.string "pass", limit: 150
   end
 
   add_foreign_key "collected_coins", "users", name: "collected_coins_ibfk_1"
