@@ -17,7 +17,7 @@ default: &default
 
 development:
   <<: *default
-  database: GAME_DB_DEV
+  database: dd3aiv3fl9lo89
 test:
   <<: *default
   database: GAME_DB_TEST
