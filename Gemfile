@@ -8,9 +8,6 @@ gem 'rails', '~> 6.1.1'
 # Use mysql2 as the database for Active Record
 # gem 'mysql2', '~> 0.5.3'
 
-gem 'pg'
-# gem 'rails_12factor', group: :production
-
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -35,6 +32,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pg'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
