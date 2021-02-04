@@ -24,3 +24,22 @@ test:
 production:
   <<: *default
   database: GAME_DB_PROD
+
+
+# default: &default
+#   adapter: mysql2
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+#   username: root
+#   password: 123
+#   encoding: utf8
+
+# development:
+#   <<: *default
+#   database: GAME_DB_DEV
+# test:
+#   <<: *default
+#   database: GAME_DB_TEST
+# production:
+#   <<: *default
+#   database: GAME_DB_PROD
