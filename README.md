@@ -1,5 +1,5 @@
 <h1 align="center">
-   🏆 Trophy Back
+   🏆 Trophy Api
 </h1>
 <p align="center">🚀 Sistema para troféus de um jogo </p>
 
@@ -7,6 +7,7 @@
 
 - [x] Signin end-point
 - [x] CRUD for entities: User, Monster, Deaths, Collected Coins and Trophy
+- [ ] Test Unity
 
 🏆 Aplicação
 
@@ -22,12 +23,11 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ### 🎲 Rodando o Front
 
-bash
+```bash
 # Clone este repositório
 $ git clone https://github.com/isa-desenvolvimento/trophy-api
 
-# Acesse o projeto pelo explorador de pastas
-# dentro da pasta config, procure o arquivo database.yml e configure
+# Acesse a pasta config, procure o arquivo database.yml e configure:
 # os parametros: username, password para os configurados no seu mysql.
 
 # Acesse a pasta do projeto no terminal/cmd
@@ -45,8 +45,7 @@ $ rails routes
 $ rails s
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000/auth/auth>
-
-
+```
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
