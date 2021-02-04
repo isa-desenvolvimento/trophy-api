@@ -8,11 +8,12 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  username: eqalelynuycikh
+  password: 78e67ad63e3b0bc06ed4f57d1673affdb3d36c2a4b7ad096b5384877b2879ff9
   pool: 5
   timeout: 5000
-  host: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
+  host: ec2-54-145-249-177.compute-1.amazonaws.com
+  port: 5432
 
 development:
   <<: *default
