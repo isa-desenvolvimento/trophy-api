@@ -11,10 +11,6 @@
 
 🏆 Aplicação
 
-<h4 align="center"> 
-   ![Alt Text](https://github.com/i-zzaa/trophy-front/blob/main/src/assets/trophy.gif)
-</h4>
-
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
