@@ -1,0 +1,11 @@
+addons:
+  postgresql: 9.6
+after_success:
+  - bundle install
+  - psql -c 'create database dd3aiv3fl9lo89;' -U postgres
+dist: trusty
+language: ruby
+rvm:
+  - 2.4.1
+script:
+  - bundle exec rails db:migrate RAILS_ENV=development
