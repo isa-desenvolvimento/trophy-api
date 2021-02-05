@@ -6,8 +6,7 @@ after_success:
   - psql -c 'create database dd3aiv3fl9lo89;' -U postgres
 dist: trusty
 language: ruby
-rvm:
-  - 3.0.9
+rvm: truffleruby
 script:
   - bundle exec rails db:migrate RAILS_ENV=development
 deploy:
