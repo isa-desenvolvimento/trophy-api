@@ -5,6 +5,27 @@
 #   gem 'mysql2'
 #
 
+
+# default: &default
+#   adapter: postgresql
+#   encoding: utf8
+#   username: postgres
+#   password: root
+#   pool: 5
+#   timeout: 5000
+#   port: 5432
+
+# development:
+#   <<: *default
+#   database: GAME_DB_DEV
+# test:
+#   <<: *default
+#   database: GAME_DB_TEST
+# production:
+#   <<: *default
+#   database: GAME_DB_PROD
+
+
 default: &default
   adapter: postgresql
   encoding: utf8
@@ -18,12 +39,12 @@ default: &default
 development:
   <<: *default
   database: dd3aiv3fl9lo89
-test:
-  <<: *default
-  database: GAME_DB_TEST
-production:
-  <<: *default
-  database: GAME_DB_PROD
+# test:
+#   <<: *default
+#   database: GAME_DB_TEST
+# production:
+#   <<: *default
+#   database: GAME_DB_PROD
 
 
 # default: &default
