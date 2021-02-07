@@ -6,7 +6,7 @@ ruby '2.5.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
 # Use mysql2 as the database for Active Record
-#gem 'mysql2', '~> 0.5.3'
+gem 'mysql2', '~> 0.5.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -34,5 +35,18 @@ end
 group :development do
   gem 'pg'
 end
+
+group :production do
+  gem 'pg'
+end
+
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+gem 'dotenv-rails', groups: [:development, :test] # Caso você queira isolar variáveis de ambiente no projeto
+gem 'devise'
+gem 'devise-jwt'
+
+gem 'rack-cors'

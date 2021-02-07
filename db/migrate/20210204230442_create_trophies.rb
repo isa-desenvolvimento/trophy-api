@@ -3,7 +3,6 @@ class CreateTrophies < ActiveRecord::Migration[6.1]
     create_table :trophies do |t|
       t.string :name
 
-      t.timestamps
     end
   end
 end

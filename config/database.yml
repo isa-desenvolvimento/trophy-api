@@ -26,25 +26,49 @@
 #   database: GAME_DB_PROD
 
 
+
 default: &default
   adapter: postgresql
   encoding: utf8
-  username: eqalelynuycikh
-  password: 78e67ad63e3b0bc06ed4f57d1673affdb3d36c2a4b7ad096b5384877b2879ff9
+  username: vmkswmrhjzhdvp
+  password: bf947349bc24fd93a50d7e134a45d49d657e0d26c83301f811e7b84aabd8bf54
   pool: 5
   timeout: 5000
-  host: ec2-54-145-249-177.compute-1.amazonaws.com
+  host: ec2-34-198-31-223.compute-1.amazonaws.com
   port: 5432
 
 development:
   <<: *default
-  database: dd3aiv3fl9lo89
+  database: ddqkmut8d9a7bs
+production:
+  <<: *default
+  database: ddqkmut8d9a7bs
+
+
+# default: &default
+#   adapter: postgresql
+#   encoding: utf8
+#   username: eqalelynuycikh
+#   password: 78e67ad63e3b0bc06ed4f57d1673affdb3d36c2a4b7ad096b5384877b2879ff9
+#   pool: 5
+#   timeout: 5000
+#   host: ec2-54-145-249-177.compute-1.amazonaws.com
+#   port: 5432
+
+# development:
+#   <<: *default
+#   database: dd3aiv3fl9lo89
+
 # test:
 #   <<: *default
 #   database: GAME_DB_TEST
 # production:
 #   <<: *default
 #   database: GAME_DB_PROD
+
+
+
+
 
 
 # default: &default

@@ -17,7 +17,6 @@ class UserController < ApplicationController
         render json: {status: 'SUCCESS', message:'Loaded user', data:@user},status: :ok
     end
 
-
     def create
         puts params
         @users = User.new(user_params)
@@ -50,7 +49,4 @@ class UserController < ApplicationController
         puts params["pass"] = enc
         params.permit(:name, :email, :pass)
     end
-
-   
-
 end

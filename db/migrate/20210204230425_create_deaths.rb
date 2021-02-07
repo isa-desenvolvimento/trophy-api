@@ -3,7 +3,6 @@ class CreateDeaths < ActiveRecord::Migration[6.1]
     create_table :deaths do |t|
       t.timestamp :time_reg
 
-      t.timestamps
     end
   end
 end

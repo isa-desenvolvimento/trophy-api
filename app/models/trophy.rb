@@ -1,2 +1,79 @@
 class Trophy < ApplicationRecord
+    
+    def self.rank(user_id)
+
+        a = User.exists(user_id)
+        puts a
+        if (User.exists(user_id) == false)
+            return {}
+        else
+            coins = CollectedCoin.sum_coins(user_id)
+            kill = KilledMonster.sum_monsters(user_id)
+            deaths = Death.sum_deaths(user_id)
+    
+            rm1 = (!kill[1].nil?) ? kill[1] : 0
+            rm2 = (!kill[2].nil?) ? kill[2] : 0
+    
+            {
+                'sum_coins':coins,
+                'sum_kill_by_monster':kill,
+                'sum_deaths':deaths,
+                'rank_coins': rank_coins(coins),
+                'rank_deaths': rank_deaths(deaths),
+                'rank_kill_monster_1': rank_monster(rm1),
+                'rank_kill_monster_2': rank_monster(rm2)  #ATENÇÃO NESSE TRECHO, POIS O ID ESTÁ FIXO, CONSIDERANDO QUE SÓ HAVERÁ DOIS MONSTROS CADASTRADOS
+            }
+        end
+    end
+
+
+    def self.rank_monster(deaths)
+        #Níveis: 1, 100, 1.000, 10.000, 100.000
+        if deaths >= 1 and deaths <= 100
+            'Bronze'
+        elsif deaths >= 101 and deaths <= 1000
+            'Silver'
+        elsif deaths >= 1001 and deaths <= 10000
+            'Gold'
+        elsif deaths >= 10001 and deaths <= 100000
+            'Platinum'
+        elsif deaths > 100000
+            'Daimond'
+        end
+    end
+
+
+
+    def self.rank_deaths(deaths)
+
+        #Níveis: 1 morte, 10, 25, 50 e 100 mortes
+        if deaths >= 1 and deaths <= 10
+            'Daimond'
+        elsif deaths >= 11 and deaths <= 25
+            'Platinum'
+        elsif deaths >= 26 and deaths <= 50
+            'Gold'
+        elsif deaths >= 51 and deaths <= 100
+            'Silver'
+        elsif deaths > 101
+            'Bronze'
+        end
+    end
+
+
+    def self.rank_coins(coins)
+
+        #Níveis: 1 moeda, 100, 1.000, 10.000 e 100.000 moedas
+        if coins >= 1 and coins <= 100
+            'Bronze'
+        elsif coins >= 101 and coins <= 1000
+            'Silver'
+        elsif coins >= 1001 and coins <= 10000
+            'Gold'
+        elsif coins >= 10001 and coins <= 100000
+            'Platinum'
+        elsif coins > 100000
+            'Daimond'
+        end
+    end
 end
