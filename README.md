@@ -29,6 +29,7 @@ $ git clone https://github.com/isa-desenvolvimento/trophy-api
 # Acesse a pasta do projeto no terminal/cmd
 $ cd trophy-api
 
+# Execute o seguinte comando para fazer o download das dependências 
 $ bundle install
 
 # Execute o seguinte comando para fazer a migração no banco
