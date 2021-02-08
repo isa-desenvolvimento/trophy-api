@@ -50,3 +50,8 @@ gem 'devise'
 gem 'devise-jwt'
 
 gem 'rswag'
+
+gem 'factory_bot'
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.2'
+end
