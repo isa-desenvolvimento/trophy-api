@@ -49,4 +49,4 @@ gem 'dotenv-rails', groups: [:development, :test] # Caso você queira isolar var
 gem 'devise'
 gem 'devise-jwt'
 
-gem 'rack-cors'
+gem 'rswag'
