@@ -9,9 +9,9 @@
 - [x] CRUD for entities: User, Monster, Deaths, Collected Coins and Trophy
 - [ ] Test Unity
 
-###🏆 Aplicação
+### 🏆 Aplicação
 
-Documentado no ![swagger](https://trophy-api.herokuapp.com/api-docs/index.html)
+Documentado no [swagger](https://trophy-api.herokuapp.com/api-docs/index.html)
 
 ### Pré-requisitos
 
