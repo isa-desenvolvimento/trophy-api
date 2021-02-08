@@ -53,3 +53,5 @@ gem 'rswag'
 
 gem 'factory_bot'
 gem 'rspec-rails', '~> 4.0.2'
+
+gem 'rack-cors'
