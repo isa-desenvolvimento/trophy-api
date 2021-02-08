@@ -17,7 +17,7 @@ Trophy.create(name: 'Gold')
 Trophy.create(name: 'Silver')
 Trophy.create(name: 'Bronze')
 Trophy.create(name: 'Platinum')
-Trophy.create(name: 'Daimond')
+Trophy.create(name: 'Diamond')
 
 CollectedCoin.create(value_coin: 2, user_id:1)
 CollectedCoin.create(value_coin: 5, user_id:1)

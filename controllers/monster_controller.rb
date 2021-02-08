@@ -1,6 +1,6 @@
 class MonsterController < ApplicationController
 
-  
+  before_action :authenticate_user!
 
   def index
     @monster = Monster.order('name ASC');
@@ -12,7 +12,6 @@ class MonsterController < ApplicationController
     render json: {status: 'SUCCESS', message:'Loaded article', data:@monster},status: :ok
   end
 
-  before_action :authenticate_user!
   def create
     @monster = Monster.new(params.permit(:name))
     if @monster.save

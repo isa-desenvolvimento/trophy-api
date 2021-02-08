@@ -1,0 +1,443 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/collected_coin":
+    get:
+      summary: All coins
+      tags:
+      - Coins
+      responses:
+        '200':
+          description: coin found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  value_coin:
+                    type: integer
+                  user_id:
+                    type: integer
+                required:
+                - id
+                - value_coin
+                - user_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  value_coin:
+                    type: integer
+                  user_id:
+                    type: integer
+                required:
+                - id
+                - value_coin
+                - user_id
+        '401':
+          description: coin not saved
+    post:
+      summary: Save coin
+      tags:
+      - Coins
+      parameters: []
+      responses:
+        '201':
+          description: coin created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value_coin:
+                  type: integer
+                user_id:
+                  type: integer
+              required:
+              - value_coin
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                value_coin:
+                  type: integer
+                user_id:
+                  type: integer
+              required:
+              - value_coin
+              - user_id
+  "/collected_coin/{id}":
+    delete:
+      summary: Delete coin
+      tags:
+      - Coins
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: coin deleted
+        '404':
+          description: coin not found
+  "/death":
+    get:
+      summary: All deaths
+      tags:
+      - Death
+      responses:
+        '200':
+          description: deaths found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  time_reg:
+                    type: timestamp
+                  user_id:
+                    type: integer
+                required:
+                - id
+                - value_coin
+                - time_reg
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  time_reg:
+                    type: timestamp
+                  user_id:
+                    type: integer
+                required:
+                - id
+                - value_coin
+                - time_reg
+        '404':
+          description: deaths not found
+    post:
+      summary: Save death
+      tags:
+      - Death
+      parameters: []
+      responses:
+        '201':
+          description: death created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                time_reg:
+                  type: timestamp
+                user_id:
+                  type: integer
+              required:
+              - time_reg
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                time_reg:
+                  type: timestamp
+                user_id:
+                  type: integer
+              required:
+              - time_reg
+              - user_id
+  "/death/{id}":
+    delete:
+      summary: Delete death
+      tags:
+      - Death
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: death deleted
+        '404':
+          description: death not found
+  "/killed_monster":
+    get:
+      summary: Retrieves killed monsters
+      tags:
+      - Killed Monster
+      responses:
+        '200':
+          description: killed monsters founded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  monster_id:
+                    type: integer
+                required:
+                - id
+                - user_id
+                - monster_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  monster_id:
+                    type: integer
+                required:
+                - id
+                - user_id
+                - monster_id
+        '404':
+          description: killed monsters not founded
+    post:
+      summary: Save killed monster
+      tags:
+      - Killed Monster
+      parameters: []
+      responses:
+        '201':
+          description: killed monster created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                monster_id:
+                  type: integer
+              required:
+              - id
+              - monster_id
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                monster_id:
+                  type: integer
+              required:
+              - id
+              - monster_id
+              - user_id
+  "/killed_monster/{id}":
+    delete:
+      summary: Delete killed monster
+      tags:
+      - Killed Monster
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: killed monster deleted
+        '404':
+          description: killed monster not found
+  "/monster":
+    get:
+      summary: Retrieves monsters
+      tags:
+      - Monster
+      responses:
+        '200':
+          description: name found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                required:
+                - id
+                - name
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                required:
+                - id
+                - name
+        '404':
+          description: monster not found
+  "/monster/{id}":
+    put:
+      summary: Retrieves monsters
+      tags:
+      - Monster
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: name found
+        '404':
+          description: monster not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/user":
+    get:
+      summary: All users
+      tags:
+      - User
+      responses:
+        '200':
+          description: users found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - email
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - email
+        '404':
+          description: users not found
+  "/signup":
+    post:
+      summary: Save user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+  "/user/{id}":
+    delete:
+      summary: Delete user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: user deleted
+        '404':
+          description: user not found
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: www.localhost:3000

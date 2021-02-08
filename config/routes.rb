@@ -1,52 +1,18 @@
 Rails.application.routes.draw do
 
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get 'collected_coin/index'
-  get 'collected_coin/new'
-  post 'collected_coin/create'
-  put 'collected_coin/update'
-  delete 'collected_coin/destroy'
-
-  get 'death/index'
-  get 'death/new'
-  post 'death/create'
-  put 'death/update'
-  delete 'death/destroy'
-  
-  get 'killed_monster/index'
-  get 'killed_monster/new'
-  post 'killed_monster/create'
-  put 'killed_monster/update'
-  delete 'killed_monster/destroy'
-  
-  get 'monster/index'
-  get 'monster/new'
-  post 'monster/create'
-  put 'monster/update'
-  delete 'monster/destroy'
-  
-  get 'trophy/index'
-  get 'trophy/new'
-  post 'trophy/create'
-  put 'trophy/update'
-  delete 'trophy/destroy'
-  
-  get 'users_trophy/index'
-  get 'users_trophy/new'
-  post 'users_trophy/create'
-  put 'users_trophy/update'
-  delete 'users_trophy/destroy'
-  
-  get 'user/index'
-  get 'user/new'
-  post 'user/create'
-  put 'user/update'
-  delete 'user/destroy'
+  resources :collected_coin
+  resources :death
+  resources :killed_monster
+  resources :monster, only: [:index, :update]
+  resources :trophy
 
   # post '/user/sign_in'
   # post '/user/sign_out'
   # post '/user/sign_up'
-
 
   resources :user do
     get 'sum_coins' #, on: :collection
