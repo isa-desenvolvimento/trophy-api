@@ -54,3 +54,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Postgresql](https://www.postgresql.org/)
 - [Ruby 2.5.8](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-5-8-released/)
 - [Rails](https://rubygems.org/gems/rails/versions/6.1.1)
+- [Travis CI](https://travis-ci.com/)
