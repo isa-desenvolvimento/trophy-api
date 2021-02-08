@@ -17,7 +17,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [PostgresSql](postgresql.org/), [Ruby](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-5-8-released/), [Rails](https://rubygems.org/gems/rails/versions/6.1.1). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### 🎲 Rodando o Front
+### 🎲 Rodando o Back
 
 ```bash
 # Clone este repositório
