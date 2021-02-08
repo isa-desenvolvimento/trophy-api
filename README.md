@@ -29,6 +29,8 @@ $ git clone https://github.com/isa-desenvolvimento/trophy-api
 # Acesse a pasta do projeto no terminal/cmd
 $ cd trophy-api
 
+$ bundle install
+
 # Execute o seguinte comando para fazer a migração no banco
 $ rake db:drop:all
 $ rake db:create:all
