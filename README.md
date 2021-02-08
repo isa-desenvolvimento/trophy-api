@@ -14,7 +14,7 @@
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[MySql](https://www.mysql.com/), [Ruby](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-5-8-released/), [Rails](https://rubygems.org/gems/rails/versions/6.1.1). 
+[PostgresSql](postgresql.org/), [Ruby](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-5-8-released/), [Rails](https://rubygems.org/gems/rails/versions/6.1.1). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando o Front
@@ -49,6 +49,6 @@ $ rails s
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [MySql](https://www.mysql.com/)
+- [PostgresSql](postgresql.org/)
 - [Ruby](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-5-8-released/)
 - [Rails](https://rubygems.org/gems/rails/versions/6.1.1)
