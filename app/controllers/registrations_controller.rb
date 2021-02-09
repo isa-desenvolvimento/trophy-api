@@ -3,13 +3,14 @@ class RegistrationsController < Devise::RegistrationsController
   
     
     def create
-      puts "-------------------------------"
-      puts sign_up_params
-      
       build_resource(sign_up_params)
   
       resource.save
   
+      puts '******************************************'
+      puts resource
+      puts params
+      
       if resource.errors.empty?
         render json: resource
       else

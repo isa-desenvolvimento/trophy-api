@@ -7,7 +7,6 @@ class User < ApplicationRecord
   :jwt_authenticatable,
   jwt_revocation_strategy: self
 
-
   def self.sum_coins(user_id)
     CollectedCoin.sum_coins(user_id)
   end

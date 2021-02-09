@@ -81,4 +81,34 @@ describe 'Monster API' do
   end
 
 
+  path '/killed_monster/{id}/sum_monsters' do
+
+    get 'Sum monsters' do
+      tags 'Killed Monster'
+      consumes 'application/json', 'application/xml'
+      parameter name: :id, :in => :path, :type => :string
+      
+      response '200', 'name found' do
+        schema type: :object,
+          properties: {
+            status: { type: :string, },
+            message: { type: :string },
+            data: { 
+              type: :object, properties: {
+                "1": { type: :integer },
+                "2": { type: :integer },
+              } 
+            }
+          }
+        let(:id) { KilledMonster.create(monster_id: 1, user_id: 1).id }
+        run_test!
+      end
+
+      response '404', 'sum monsters not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end

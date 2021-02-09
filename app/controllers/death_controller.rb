@@ -18,7 +18,7 @@ class DeathController < ApplicationController
     render json: {status: 'SUCCESS', message:'Loaded deaths', data:@death},status: :ok
   end
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   def create
     @death = Death.new(params.permit(:name))
     if @death.save

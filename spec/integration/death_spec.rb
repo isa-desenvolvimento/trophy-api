@@ -76,4 +76,31 @@ describe 'Death API' do
       end
     end
   end
+
+  path '/death/{id}/sum_deaths' do
+    get 'Sum deaths' do
+      tags 'Death'
+      consumes 'application/json', 'application/xml'
+      parameter name: :id, :in => :path, :type => :integer
+
+      response '200', 'death deleted' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer, },
+            time_reg: { type: :timestamp },
+            user_id: { type: :integer }
+          },
+          required: [ 'id', 'time_reg', 'user_id' ]
+
+        let(:id) { Death.create(time_reg: Time.now, user_id: 1).id }
+        run_test!
+      end
+
+      response '404', 'sum deaths not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end

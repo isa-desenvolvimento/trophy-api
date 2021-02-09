@@ -70,7 +70,7 @@ describe 'User API' do
             email: { type: :string },
             password: { type: :string }
           },
-          required: [ 'id', 'name', 'email' ]
+          required: [ 'id']
 
         let(:id) { User.create(name: 'Test', email: 'test@email.com', password: 'test123').id }
         run_test!
@@ -82,4 +82,32 @@ describe 'User API' do
       end
     end
   end
+
+
+  path '/user/{id}/sum_coins' do
+    get 'coins user' do
+      tags 'User'
+      consumes 'application/json', 'application/xml'
+      parameter name: :id, :in => :path, :type => :integer
+
+      response '200', 'user deleted' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer, },
+            user_id: { type: :integer },
+            sum_coins: { type: :integer }
+          },
+          required: ['user_id', 'sum_coins' ]
+
+        let(:id) { User.create(user_id: 1, sum_coins: 1).id }
+        run_test!
+      end
+
+      response '404', 'user not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end
