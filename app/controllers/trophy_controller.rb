@@ -17,7 +17,7 @@ class TrophyController < ApplicationController
         render json: {status: 'SUCCESS', message:'Loaded trophy', data:@trophys},status: :ok
     end
 
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     def create
         puts params
         @trophys = Trophy.new(params.permit(:name))

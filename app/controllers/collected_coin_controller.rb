@@ -11,7 +11,7 @@ class CollectedCoinController < ApplicationController
       end
     
 
-      before_action :authenticate_user!
+      # before_action :authenticate_user!
       
       def create				
         @collectedCoin = CollectedCoin.new(collectedCoin_params)
