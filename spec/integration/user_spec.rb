@@ -33,11 +33,14 @@ describe 'User API' do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
-          email: { type: :string },
-          password: { type: :string }
-        },
-          
+          user: {
+            type: :object, properties: {
+              name: { type: :string },
+              email: { type: :string },
+              password: { type: :string },
+            }         
+          }
+        },          
         required: [ 'name', 'email', 'password' ]
       }
       
