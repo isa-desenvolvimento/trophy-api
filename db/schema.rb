@@ -36,15 +36,8 @@ ActiveRecord::Schema.define(version: 2021_02_04_232646) do
   end
 
   create_table "trophies", charset: "utf8", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "user_trophies", charset: "utf8", force: :cascade do |t|
-    t.integer "trophy_id"
-    t.bigint "user_id"
-    t.bigint "monster_id"
-    t.index ["monster_id"], name: "index_user_trophies_on_monster_id"
-    t.index ["user_id"], name: "index_user_trophies_on_user_id"
+    t.string "name", null: false, unique: true
+    t.integer "punctuation", null: false, unique: true
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -52,13 +45,33 @@ ActiveRecord::Schema.define(version: 2021_02_04_232646) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.string "jti", default: "", null: false
+    t.bigint "user_sums_id"
+
+    t.index ["user_sums_id"], name: "index_user_on_user_sums_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "users_sums", charset: "utf8", force: :cascade do |t|
+    t.integer "sum_coins", default: ""
+    t.integer "sum_kill_by_monster", default: ""
+    t.integer "sum_deaths", default: ""
+    t.string "rank_coins", default: ""
+    t.string "rank_deaths", default: ""
+  end
+
+  create_table "rank_monsters", charset: "utf8", force: :cascade do |t|
+    t.bigint "monster_id"
+    t.string "rank_kill_monster", default: ""
+    t.bigint "user_sums_id"    
+
+    t.index ["monster_id"], name: "index_rank_monsters_on_monster_id"
+    t.index ["user_sums_id"], name: "index_rank_monsters_on_user_sums_id"
   end
 
   add_foreign_key "collected_coins", "users"
   add_foreign_key "deaths", "users"
   add_foreign_key "killed_monsters", "monsters"
-  add_foreign_key "killed_monsters", "users"
-  add_foreign_key "user_trophies", "monsters"
-  add_foreign_key "user_trophies", "users"
+  add_foreign_key "killed_monsters", "users"  
+  add_foreign_key "rank_monsters", "users_sums"
+  add_foreign_key "users", "users_sums"
 end
