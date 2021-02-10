@@ -6,10 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'Abacaxi', email: 'abacaxi@abacaxi.com.br', password: 'relogio123')
-User.create(name: 'Laranja', email: 'laranja@laranja.com.br', password: 'relogio123')
-User.create(name: 'Abacate', email: 'abacate@abacate.com.br', password: 'relogio123')
-
 Monster.create(name: 'turtle')
 Monster.create(name: 'bowser')
 
@@ -24,6 +20,22 @@ TrophyDeath.create(name: 'Platinum', punctuation: 100)
 TrophyDeath.create(name: 'Gold', punctuation: 1000)
 TrophyDeath.create(name: 'Silver', punctuation: 10000)
 TrophyDeath.create(name: 'Bronze', punctuation: 100000)
+
+InfoMonster.create(monster_id:1, trophies_id: 5, sum: 2)
+InfoMonster.create(monster_id:2, trophies_id: 5, sum: 1)
+InfoMonster.create(monster_id:2, trophies_id: 5, sum: 1)
+
+InfoCoin.create(trophies_id: 5, sum: 7)
+InfoCoin.create(trophies_id: 5, sum: 10)
+
+InfoDeath.create(trophies_id: 1, sum: 2)
+InfoDeath.create(trophies_id: 1, sum: 10)
+
+
+User.create(name: 'Abacaxi', email: 'abacaxi@abacaxi.com.br', password: 'relogio123', info_coins_id: 1, info_deaths_id: 1, info_monsters_id: 1)
+User.create(name: 'Laranja', email: 'laranja@laranja.com.br', password: 'relogio123', info_coins_id: 2, info_deaths_id: 2, info_monsters_id: 2)
+User.create(name: 'Abacate', email: 'abacate@abacate.com.br', password: 'relogio123', info_coins_id: 3, info_deaths_id: 2, info_monsters_id: 2)
+
 
 CollectedCoin.create(value_coin: 2, user_id:1)
 CollectedCoin.create(value_coin: 5, user_id:1)
@@ -48,12 +60,3 @@ Death.create(user_id:2, time_reg:'2021-02-09 10:13:03')
 Death.create(user_id:2, time_reg:'2021-02-09 13:13:03')
 Death.create(user_id:2, time_reg:'2021-02-09 14:13:03')
 
-RankMonster.create(monster_id:1, user_infos_id: 1, rank_kill_monster: 'Bronze')
-RankMonster.create(monster_id:2, user_infos_id: 1, rank_kill_monster: 'Bronze')
-
-UserInfo.create(sum_coins:7, sum_deaths: 2, rank_coins: 'Bronze', rank_deaths: 'Diamond')
-UserInfo.create(sum_coins:10, sum_deaths: 10, rank_coins: 'Bronze', rank_deaths: 'Diamond')
-
-RankMonster.create(user_infos: 1, monster_id: 1, sum_kill: 2, rank_monster: 'Bronze')
-RankMonster.create(user_infos: 1, monster_id: 2, sum_kill: 1 rank_monster: 'Bronze')
-RankMonster.create(user_infos: 2, monster_id: 2, sum_kill: 1, rank_monster: 'Bronze')
