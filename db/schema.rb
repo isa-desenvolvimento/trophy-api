@@ -40,38 +40,57 @@ ActiveRecord::Schema.define(version: 2021_02_04_232646) do
     t.integer "punctuation", null: false, unique: true
   end
 
+  create_table "trophies_deaths", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false, unique: true
+    t.integer "punctuation", null: false, unique: true
+  end
+
+  create_table "info_coins", charset: "utf8", force: :cascade do |t|
+    t.integer "sum", null: false, unique: true
+    t.integer "trophies_id"
+    t.index ["trophies_id"], name: "index_info_coins_on_trophies_id"
+  end
+
+  create_table "info_monsters", charset: "utf8", force: :cascade do |t|
+    t.integer "sum", null: false, unique: true
+    t.integer "trophies_id"
+    t.integer "monsters_id"
+    t.index ["trophies_id"], name: "index_info_monsters_on_trophies_id"
+    t.index ["monsters_id"], name: "index_info_monsters_on_monsters_id"
+  end
+
+  create_table "info_deaths", charset: "utf8", force: :cascade do |t|
+    t.integer "sum", null: false, unique: true
+    t.integer "trophies_deaths_id"
+    t.index ["trophies_deaths_id"], name: "index_info_coins_on_trophies_deaths_id"
+  end
+
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.string "jti", default: "", null: false
-    t.bigint "user_sums_id"
+    t.bigint "info_coins_id"
+    t.bigint "info_deaths_id"
+    t.bigint "info_monsters_id"
 
-    t.index ["user_sums_id"], name: "index_user_on_user_sums_id"
+    t.index ["info_coins_id"], name: "index_users_on_info_coins_id"
+    t.index ["info_deaths_id"], name: "index_users_on_info_deaths_id"
+    t.index ["info_monsters_id"], name: "index_users_on_info_monsters_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "users_sums", charset: "utf8", force: :cascade do |t|
-    t.integer "sum_coins", default: ""
-    t.integer "sum_kill_by_monster", default: ""
-    t.integer "sum_deaths", default: ""
-    t.string "rank_coins", default: ""
-    t.string "rank_deaths", default: ""
-  end
-
-  create_table "rank_monsters", charset: "utf8", force: :cascade do |t|
-    t.bigint "monster_id"
-    t.string "rank_kill_monster", default: ""
-    t.bigint "user_sums_id"    
-
-    t.index ["monster_id"], name: "index_rank_monsters_on_monster_id"
-    t.index ["user_sums_id"], name: "index_rank_monsters_on_user_sums_id"
-  end
 
   add_foreign_key "collected_coins", "users"
   add_foreign_key "deaths", "users"
   add_foreign_key "killed_monsters", "monsters"
   add_foreign_key "killed_monsters", "users"  
-  add_foreign_key "rank_monsters", "users_sums"
-  add_foreign_key "users", "users_sums"
+  add_foreign_key "rank_monsters", "users_infos"
+  add_foreign_key "users", "info_monsters"
+  add_foreign_key "users", "info_coins"
+  add_foreign_key "users", "info_deaths"
+  add_foreign_key "info_monsters", "trophies"
+  add_foreign_key "info_coins", "trophies"
+  add_foreign_key "info_deaths", "trophies_deaths"
 end

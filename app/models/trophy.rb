@@ -16,8 +16,10 @@ class Trophy < ApplicationRecord
     
             {
                 'sum_coins':coins,
-                'sum_kill_by_monster':kill,
                 'sum_deaths':deaths,
+                'sum_kill_monster_1': rank_monster(rm1),
+                'sum_kill_monster_2': rank_monster(rm2)
+                
                 'rank_coins': rank_coins(coins),
                 'rank_deaths': rank_deaths(deaths),
                 'rank_kill_monster_1': rank_monster(rm1),
