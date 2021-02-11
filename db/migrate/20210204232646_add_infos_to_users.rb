@@ -6,7 +6,7 @@ class AddInfosToUsers < ActiveRecord::Migration[6.1]
     add_reference :info_monsters , :users, foreign_key: true
     add_reference :info_deaths, :trophy_deaths, foreign_key: true
 
-    add_reference :users, :info_coins, foreign_key: true
-    add_reference :users, :info_deaths, foreign_key: true
+    # add_reference :users, :info_coins, foreign_key: true
+    # add_reference :users, :info_deaths, foreign_key: true
   end
 end

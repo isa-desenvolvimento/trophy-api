@@ -33,9 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       t.string :name,              null: false, default: ""
-      # t.integer :info_coins_id, default: 0
-      # t.integer :info_deaths_id, default: 0
-      # t.integer :info_monsters_id, default: 0      
+      t.integer :info_coins_id, default: 0
+      t.integer :info_deaths_id, default: 0
+      t.integer :info_monsters_id, default: 0      
       t.string :jti, null: false, default: ""
       # t.timestamps null: false
     end

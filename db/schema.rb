@@ -12,31 +12,31 @@
 
 ActiveRecord::Schema.define(version: 2021_02_04_232646) do
 
-  create_table "collected_coins", charset: "latin1", force: :cascade do |t|
+  create_table "collected_coins", charset: "utf8", force: :cascade do |t|
     t.integer "value_coin"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_collected_coins_on_user_id"
   end
 
-  create_table "deaths", charset: "latin1", force: :cascade do |t|
+  create_table "deaths", charset: "utf8", force: :cascade do |t|
     t.timestamp "time_reg"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_deaths_on_user_id"
   end
 
-  create_table "info_coins", charset: "latin1", force: :cascade do |t|
+  create_table "info_coins", charset: "utf8", force: :cascade do |t|
     t.integer "sum", default: 0
     t.bigint "trophies_id"
     t.index ["trophies_id"], name: "index_info_coins_on_trophies_id"
   end
 
-  create_table "info_deaths", charset: "latin1", force: :cascade do |t|
+  create_table "info_deaths", charset: "utf8", force: :cascade do |t|
     t.integer "sum", default: 0
     t.bigint "trophy_deaths_id"
     t.index ["trophy_deaths_id"], name: "index_info_deaths_on_trophy_deaths_id"
   end
 
-  create_table "info_monsters", charset: "latin1", force: :cascade do |t|
+  create_table "info_monsters", charset: "utf8", force: :cascade do |t|
     t.integer "sum", default: 0
     t.bigint "trophies_id"
     t.bigint "monsters_id"
@@ -46,37 +46,36 @@ ActiveRecord::Schema.define(version: 2021_02_04_232646) do
     t.index ["users_id"], name: "index_info_monsters_on_users_id"
   end
 
-  create_table "killed_monsters", charset: "latin1", force: :cascade do |t|
+  create_table "killed_monsters", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "monster_id"
     t.index ["monster_id"], name: "index_killed_monsters_on_monster_id"
     t.index ["user_id"], name: "index_killed_monsters_on_user_id"
   end
 
-  create_table "monsters", charset: "latin1", force: :cascade do |t|
+  create_table "monsters", charset: "utf8", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "trophies", charset: "latin1", force: :cascade do |t|
-    t.string "name"
-    t.integer "punctuation"
-  end
-
-  create_table "trophy_deaths", charset: "latin1", force: :cascade do |t|
+  create_table "trophies", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.integer "punctuation"
   end
 
-  create_table "users", charset: "latin1", force: :cascade do |t|
+  create_table "trophy_deaths", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "punctuation"
+  end
+
+  create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
+    t.integer "info_coins_id", default: 0
+    t.integer "info_deaths_id", default: 0
+    t.integer "info_monsters_id", default: 0
     t.string "jti", default: "", null: false
-    t.bigint "info_coins_id"
-    t.bigint "info_deaths_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["info_coins_id"], name: "index_users_on_info_coins_id"
-    t.index ["info_deaths_id"], name: "index_users_on_info_deaths_id"
   end
 
   add_foreign_key "collected_coins", "users"
@@ -88,6 +87,4 @@ ActiveRecord::Schema.define(version: 2021_02_04_232646) do
   add_foreign_key "info_monsters", "users", column: "users_id"
   add_foreign_key "killed_monsters", "monsters"
   add_foreign_key "killed_monsters", "users"
-  add_foreign_key "users", "info_coins", column: "info_coins_id"
-  add_foreign_key "users", "info_deaths", column: "info_deaths_id"
 end
