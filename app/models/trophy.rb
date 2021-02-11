@@ -1,5 +1,16 @@
 class Trophy < ApplicationRecord
     
+    
+    def self.get_name(id)
+        if Trophy.where("id=?", id).count > 0
+            return Trophy.find(id).name
+        end
+        return ""
+    end
+
+
+
+
     def self.rank(user_id)
 
         a = User.exists(user_id)
@@ -18,7 +29,7 @@ class Trophy < ApplicationRecord
                 'sum_coins':coins,
                 'sum_deaths':deaths,
                 'sum_kill_monster_1': rank_monster(rm1),
-                'sum_kill_monster_2': rank_monster(rm2)
+                'sum_kill_monster_2': rank_monster(rm2),
                 
                 'rank_coins': rank_coins(coins),
                 'rank_deaths': rank_deaths(deaths),

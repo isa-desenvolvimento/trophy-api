@@ -21,21 +21,21 @@ TrophyDeath.create(name: 'Gold', punctuation: 1000)
 TrophyDeath.create(name: 'Silver', punctuation: 10000)
 TrophyDeath.create(name: 'Bronze', punctuation: 100000)
 
-InfoMonster.create(monster_id:1, trophies_id: 5, sum: 2)
-InfoMonster.create(monster_id:2, trophies_id: 5, sum: 1)
-InfoMonster.create(monster_id:2, trophies_id: 5, sum: 1)
 
 InfoCoin.create(trophies_id: 5, sum: 7)
 InfoCoin.create(trophies_id: 5, sum: 10)
 
-InfoDeath.create(trophies_id: 1, sum: 2)
-InfoDeath.create(trophies_id: 1, sum: 10)
+InfoDeath.create(trophy_deaths_id: 1, sum: 2)
+InfoDeath.create(trophy_deaths_id: 1, sum: 10)
 
 
-User.create(name: 'Abacaxi', email: 'abacaxi@abacaxi.com.br', password: 'relogio123', info_coins_id: 1, info_deaths_id: 1, info_monsters_id: 1)
-User.create(name: 'Laranja', email: 'laranja@laranja.com.br', password: 'relogio123', info_coins_id: 2, info_deaths_id: 2, info_monsters_id: 2)
-User.create(name: 'Abacate', email: 'abacate@abacate.com.br', password: 'relogio123', info_coins_id: 3, info_deaths_id: 2, info_monsters_id: 2)
+User.create(name: 'Abacaxi', email: 'abacaxi@abacaxi.com.br', password: 'relogio123', info_coins_id: 1, info_deaths_id: 1)
+User.create(name: 'Laranja', email: 'laranja@laranja.com.br', password: 'relogio123', info_coins_id: 2, info_deaths_id: 2)
+User.create(name: 'Abacate', email: 'abacate@abacate.com.br', password: 'relogio123', info_coins_id: 3, info_deaths_id: 2)
 
+InfoMonster.create(users_id: 1, monsters_id:1, trophies_id: 5, sum: 2)
+InfoMonster.create(users_id: 1, monsters_id:2, trophies_id: 5, sum: 1)
+InfoMonster.create(users_id: 2, monsters_id:2, trophies_id: 5, sum: 1)
 
 CollectedCoin.create(value_coin: 2, user_id:1)
 CollectedCoin.create(value_coin: 5, user_id:1)

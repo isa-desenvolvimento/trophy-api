@@ -1,13 +1,5 @@
 class DeathController < ApplicationController
 
-
-  #somatória de mortes de um user
-  def sum_deaths
-    @death = Death.sum_deaths(params[:death_id])
-    render json: {status: 'SUCCESS', message:'Deaths by user', data:@death},status: :ok
-  end
-
-
   def index
     @death = Death.all;
     render json: {status: 'SUCCESS', message:'Deaths loaded', data:@death},status: :ok
@@ -20,26 +12,38 @@ class DeathController < ApplicationController
 
   # before_action :authenticate_user!
   def create
-    @death = Death.new(params.permit(:name))
-    if @death.save
-      render json: {status: 'SUCCESS', message:'Saved death', data:@death},status: :ok
-    else
-      render json: {status: 'ERROR', message:'Death not saved', data:@death.errors},status: :unprocessable_entity
+    Death.transaction do
+      @death = Death.new(params.permit(:name))
+      if @death.save && @death.save_info_death(death_params)
+        render json: {status: 'SUCCESS', message:'Saved death', data:@death},status: :ok
+      else
+        render json: {status: 'ERROR', message:'Death not saved', data:@death.errors},status: :unprocessable_entity
+        raise ActiveRecord::Rollback, "Erro"
+      end
     end
   end
 
   def destroy
+    Death.transaction do
     @death = Death.find(params[:id])
-    @death.destroy
-    render json: {status: 'SUCCESS', message:'Deleted death', data:@death},status: :ok
+      if @death.destroy
+        render json: {status: 'SUCCESS', message:'Deleted death', data:@death},status: :ok
+      else
+        render json: {status: 'ERROR', message:'Death not deleted', data:@death.errors},status: :unprocessable_entity
+        raise ActiveRecord::Rollback, "Erro"
+      end
+    end
   end
 
   def update
-    @death = Death.find(params[:id])
-    if @death.update(death_params)
-      render json: {status: 'SUCCESS', message:'Updated death', data:@death},status: :ok
-    else
-      render json: {status: 'ERROR', message:'Deaths not update', data:@death.erros},status: :unprocessable_entity
+    Death.transaction do
+      @death = Death.find(params[:id])
+      if @death.update(death_params)
+        render json: {status: 'SUCCESS', message:'Updated death', data:@death},status: :ok
+      else
+        render json: {status: 'ERROR', message:'Deaths not update', data:@death.erros},status: :unprocessable_entity
+        raise ActiveRecord::Rollback, "Erro"
+      end
     end
   end
 

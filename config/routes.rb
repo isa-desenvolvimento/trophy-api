@@ -7,26 +7,30 @@ Rails.application.routes.draw do
   resources :collected_coin
   resources :death
   resources :killed_monster
-  resources :monster, only: [:index, :update]
   resources :trophy
+  resources :trophy_death
+  resources :monster
+  resources :user
+  
+  #resources :monster, only: [:index, :update]
 
   # post '/user/sign_in'
   # post '/user/sign_out'
   # post '/user/sign_up'
 
+  # resources :user do
+  #   get 'sum_coins' #, on: :collection
+  # end
+
+  # resources :death do
+  #   get 'sum_deaths'
+  # end
+
+  # resources :killed_monster do
+  #   get 'sum_monsters'
+  # end
+
   resources :user do
-    get 'sum_coins' #, on: :collection
-  end
-
-  resources :death do
-    get 'sum_deaths'
-  end
-
-  resources :killed_monster do
-    get 'sum_monsters'
-  end
-
-  resources :trophy do
     get 'rank'
   end
 
@@ -39,7 +43,7 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
-  resources :protected
+  # resources :protected
   
 
 end

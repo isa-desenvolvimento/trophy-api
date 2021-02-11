@@ -16,4 +16,21 @@ class User < ApplicationRecord
     return count > 0
   end
 
+
+  def self.rank(user_id)
+
+    if self.where("id=?", user_id).count > 0
+      @user = self.find(user_id)
+      coins = InfoCoin.get(@user.info_coins_id)
+      kill = InfoMonster.get(@user.id)
+      deaths = InfoDeath.get(@user.info_deaths_id)
+
+      {
+          'sum_coins': coins,
+          'sum_deaths': deaths,
+          'sum_kill': kill
+      }
+    end
+  end
+
 end
